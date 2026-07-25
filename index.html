@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Premium Lending | Gift Cards & Cash</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: #f0f4fe;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .lending-container {
+      max-width: 1300px;
+      width: 100%;
+      background: white;
+      border-radius: 40px 40px 30px 30px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      padding: 2rem 2rem 3rem;
+      transition: all 0.2s;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid #eef2f6;
+      padding-bottom: 1.5rem;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .real-logo {
+      background: linear-gradient(145deg, #0f2b4b, #1a3f6a);
+      color: white;
+      font-weight: 700;
+      font-size: 1.7rem;
+      letter-spacing: -0.5px;
+      padding: 0.45rem 1.4rem;
+      border-radius: 60px;
+      box-shadow: 0 6px 14px rgba(0,20,40,0.12);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .real-logo i {
+      color: #fbbf24;
+      font-size: 1.5rem;
+    }
+
+    .premium-tag {
+      background: #e8edf5;
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1f2a44;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .premium-tag i {
+      color: #f59e0b;
+    }
+
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+      margin: 2rem 0 1.8rem;
+    }
+
+    .offer-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.5rem 1.5rem 1.8rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.02), 0 2px 8px rgba(0, 20, 40, 0.04);
+      border: 1px solid #edf2f9;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .offer-card:hover {
+      transform: translateY(-6px);
+      border-color: #c7d8ee;
+      box-shadow: 0 20px 30px -12px rgba(0, 40, 80, 0.12);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+    }
+
+    .offer-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0b1b33;
+      letter-spacing: -0.3px;
+      line-height: 1.3;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .offer-name i {
+      color: #2563eb;
+      font-size: 1.1rem;
+    }
+
+    .offer-badge {
+      background: #dbeafe;
+      color: #1e3a8a;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 40px;
+      white-space: nowrap;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .geo-tag {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0.3rem 0 0.6rem;
+    }
+
+    .geo-tag span {
+      background: #f1f5f9;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #1e2f50;
+      letter-spacing: 0.2px;
+    }
+
+    .offer-description {
+      font-size: 0.9rem;
+      color: #2c3e5c;
+      margin: 0.3rem 0 0.8rem;
+      opacity: 0.85;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .offer-description i {
+      color: #3b82f6;
+    }
+
+    .review-section {
+      background: #f8fafd;
+      border-radius: 60px;
+      padding: 0.5rem 0.9rem;
+      margin: 0.7rem 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #e9eef4;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .review-stars {
+      color: #fbbf24;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+    }
+
+    .review-text {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #1e2f4a;
+      background: white;
+      padding: 0.2rem 0.8rem;
+      border-radius: 50px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+      white-space: nowrap;
+    }
+
+    .review-text i {
+      color: #22c55e;
+      margin-right: 4px;
+    }
+
+    .cta-button {
+      background: #0b1b33;
+      color: white;
+      border: none;
+      padding: 0.9rem 0.5rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 0.6rem;
+      cursor: pointer;
+      transition: 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      width: 100%;
+      box-shadow: 0 4px 10px rgba(11, 27, 51, 0.08);
+      border: 1px solid transparent;
+    }
+
+    .cta-button i {
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .cta-button:hover {
+      background: #142b4b;
+      transform: scale(0.98);
+      box-shadow: 0 8px 18px rgba(0, 20, 60, 0.15);
+    }
+
+    .cta-button:active {
+      transform: scale(0.96);
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 2.8rem;
+      color: #5d6f8c;
+      font-size: 0.85rem;
+      border-top: 1px solid #e8eef6;
+      padding-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-note i {
+      color: #3b82f6;
+      margin-right: 4px;
+    }
+
+    .live-review-badge {
+      background: #22c55e;
+      color: white;
+      border-radius: 40px;
+      padding: 0.15rem 0.7rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-left: 4px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { opacity: 0.7; }
+    }
+
+    .new-offer-tag {
+      background: #f59e0b;
+      color: white;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 0.15rem 0.6rem;
+      border-radius: 40px;
+      margin-left: 6px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 640px) {
+      .lending-container {
+        padding: 1.2rem;
+      }
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .offer-name {
+        font-size: 1.1rem;
+      }
+      .review-text {
+        white-space: normal;
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="lending-container">
+
+  <!-- HEADER with real logo -->
+  <div class="header">
+    <div class="logo-area">
+      <div class="real-logo">
+        <i class="fas fa-gift"></i> LEND<span style="font-weight: 300;">+</span>
+      </div>
+      <span class="premium-tag"><i class="fas fa-bolt"></i> premium rewards</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="background: #eef2f6; padding: 0.3rem 1.2rem; border-radius: 60px; font-size: 0.8rem; font-weight: 500; color: #1a2a44;">
+        <i class="fas fa-shield-alt" style="color: #2563eb;"></i> verified
+      </span>
+      <span style="background: #1a2a44; color: white; padding: 0.3rem 1rem; border-radius: 60px; font-size: 0.75rem; font-weight: 600;">
+        <i class="fas fa-star" style="color: #fbbf24;"></i> 4.9
+      </span>
+    </div>
+  </div>
+
+  <!-- OFFERS GRID -->
+  <div class="offers-grid" id="offersContainer"></div>
+
+  <div class="footer-note">
+    <span><i class="fas fa-sync-alt"></i> real reviews · updated live</span>
+    <span><i class="fas fa-gift"></i> gift cards · sweepstakes · cash</span>
+    <span><i class="fas fa-mobile-alt"></i> mobile + web</span>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // ----- OFFER DATA (sub2=u578522 & sub5=s1SUBID1Dibet) -----
+    const offers = [
+      {
+        name: "SuperSweepstakes",
+        subtitle: "500k Prize",
+        geo: ["US", "CA", "UK"],
+        type: "Sweepstakes",
+        link: "https://app.hawktrk.com/click?pid=2&offer_id=21495&sub2=u578522&sub5=s1SUBID1Dibet",
+        icon: "fa-trophy",
+        badge: "🔥 mega"
+      },
+      {
+        name: "CTConnect",
+        subtitle: "Grocery Gift Card",
+        geo: ["US", "CA"],
+        type: "Gift Card",
+        link: "https://app.hawktrk.com/click?pid=2&offer_id=21494&sub2=u578522&sub5=s1SUBID1Dibet",
+        icon: "fa-shopping-basket",
+        badge: "grocery"
+      },
+      {
+        name: "Consumer Test Connect",
+        subtitle: "Aldi $100",
+        geo: ["US", "CA"],
+        type: "Gift Card",
+        link: "https://app.hawktrk.com/click?pid=2&offer_id=21419&sub2=u578522&sub5=s1SUBID1Dibet",
+        icon: "fa-tag",
+        badge: "aldi"
+      },
+      {
+        name: "CTConnect",
+        subtitle: "Visa $750",
+        geo: ["US", "CA"],
+        type: "Cash",
+        link: "https://app.hawktrk.com/click?pid=2&offer_id=21345&sub2=u578522&sub5=s1SUBID1Dibet",
+        icon: "fa-credit-card",
+        badge: "visa"
+      },
+      {
+        name: "Rewards Locker",
+        subtitle: "Grocery Card $1000",
+        geo: ["US", "CA"],
+        type: "Gift Card",
+        link: "https://app.hawktrk.com/click?pid=2&offer_id=20830&sub2=u578522&sub5=s1SUBID1Dibet",
+        icon: "fa-lock",
+        badge: "premium"
+      },
+      {
+        name: "CTConnect",
+        subtitle: "Lululemon GiftCard",
+        geo: ["US", "CA"],
+        type: "Gift Card",
+        link: "https://app.hawktrk.com/click?pid=2&offer_id=15720&sub2=u578522&sub5=s1SUBID1Dibet",
+        icon: "fa-tshirt",
+        badge: "lululemon"
+      },
+      {
+        name: "CTConnect",
+        subtitle: "CashApp 750",
+        geo: ["US", "CA"],
+        type: "Cash",
+        link: "https://app.hawktrk.com/click?pid=2&offer_id=11788&sub2=u578522&sub5=s1SUBID1Dibet",
+        icon: "fa-dollar-sign",
+        badge: "cashapp"
+      },
+      {
+        name: "CTConnect",
+        subtitle: "Paypal 100",
+        geo: ["US", "CA"],
+        type: "Cash",
+        link: "https://app.hawktrk.com/click?pid=2&offer_id=576&sub2=u578522&sub5=s1SUBID1Dibet",
+        icon: "fa-paypal",
+        badge: "paypal"
+      },
+      {
+        name: "CTConnect",
+        subtitle: "Taco Bell 100",
+        geo: ["US", "CA"],
+        type: "Gift Card",
+        link: "https://app.hawktrk.com/click?pid=2&offer_id=91&sub2=u578522&sub5=s1SUBID1Dibet",
+        icon: "fa-utensils",
+        badge: "taco bell"
+      },
+      {
+        name: "CTConnect",
+        subtitle: "Chick Fil A 100",
+        geo: ["US", "CA"],
+        type: "Gift Card",
+        link: "https://app.hawktrk.com/click?pid=2&offer_id=7&sub2=u578522&sub5=s1SUBID1Dibet",
+        icon: "fa-drumstick-bite",
+        badge: "chick-fil-a"
+      }
+    ];
+
+    // ----- generate random review (always changing) -----
+    function generateReview() {
+      const reviewers = ["Alex M.", "Jamie L.", "Taylor R.", "Jordan P.", "Avery S.", "Riley K.", "Quinn W.", "Cameron J.", "Dakota F.", "Parker G.", "Skyler H.", "Morgan T.", "Casey R.", "Logan S."];
+      const comments = [
+        "fast & reliable", "great conversion", "loved it", "premium quality", "highly recommend",
+        "super smooth", "amazing support", "top tier", "excellent", "will use again",
+        "perfect for traffic", "best so far", "awesome", "legit", "trusted", "instant approval",
+        "smooth payout", "top notch", "fantastic", "solid", "quick & easy", "legit offer"
+      ];
+      const randomName = reviewers[Math.floor(Math.random() * reviewers.length)];
+      const randomComment = comments[Math.floor(Math.random() * comments.length)];
+      const stars = (4 + Math.random() * 1).toFixed(1);
+      return { name: randomName, comment: randomComment, stars: stars };
+    }
+
+    // ----- render all offers with fresh reviews -----
+    function renderOffers() {
+      const container = document.getElementById('offersContainer');
+      if (!container) return;
+
+      let html = '';
+      offers.forEach((offer, index) => {
+        const review = generateReview();
+        const starCount = Math.floor(parseFloat(review.stars));
+        const starHtml = '★'.repeat(starCount) + '☆'.repeat(5 - starCount);
+        const reviewPhrase = `"${review.comment}" — ${review.name}`;
+
+        const geoBadges = offer.geo.map(g => `<span>${g}</span>`).join('');
+
+        // Add "NEW" tag to first offer as example
+        const newTag = index === 0 ? '<span class="new-offer-tag"><i class="fas fa-star"></i> NEW</span>' : '';
+
+        html += `
+          <div class="offer-card">
+            <div class="card-header">
+              <span class="offer-name">
+                <i class="fas ${offer.icon}"></i> ${offer.name}
+                <span style="font-weight: 500; font-size: 0.85rem; color: #2c3e5c; margin-left: 4px;">${offer.subtitle}</span>
+                ${newTag}
+              </span>
+              <span class="offer-badge">${offer.badge}</span>
+            </div>
+            <div class="geo-tag">
+              ${geoBadges}
+              <span style="background: #dbeafe; color:#1e3a8a;">${offer.type}</span>
+            </div>
+            <div class="offer-description">
+              <i class="fas fa-gift"></i> ${offer.type} · ${offer.subtitle}
+            </div>
+            <!-- REVIEW SECTION: always changing -->
+            <div class="review-section">
+              <span class="review-stars">${starHtml}</span>
+              <span class="review-text"><i class="fas fa-check-circle"></i> ${reviewPhrase}</span>
+              <span class="live-review-badge"><i class="fas fa-sync-alt fa-fw"></i> live</span>
+            </div>
+            <a href="${offer.link}" target="_blank" class="cta-button">
+              <i class="fas fa-arrow-right"></i> Claim now <i class="fas fa-external-link-alt" style="font-size: 0.7rem; opacity: 0.6;"></i>
+            </a>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    // initial render
+    renderOffers();
+
+    // ----- update reviews every 12 seconds (always changing) -----
+    let intervalId = setInterval(() => {
+      renderOffers();
+    }, 12000);
+
+    // handle visibility change to keep freshness
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        clearInterval(intervalId);
+      } else {
+        clearInterval(intervalId);
+        intervalId = setInterval(() => {
+          renderOffers();
+        }, 12000);
+        renderOffers(); // immediate refresh
+      }
+    });
+
+    // extra refresh after 1.5s to ensure dynamic feel
+    setTimeout(() => {
+      renderOffers();
+    }, 800);
+  })();
+</script>
+</body>
+</html>
